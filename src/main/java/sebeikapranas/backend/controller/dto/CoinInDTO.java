@@ -4,33 +4,45 @@ import java.math.BigDecimal;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Data
 @Setter
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CoinsDTO {
-
-    @NotNull
-    private Long id;
-
-    @NotBlank
-    private String obverse;
-
-    @NotBlank
-    private String reverse;
+public class CoinInDTO {
 
     @NotBlank
     private String title;
 
+    private String condition;
+
+    private Integer mintage;
+
+    private String metal;
+
+    private Float hallmark;
+
     @NotNull
-    private BigDecimal price;
+    private Float weight;
+
+    @NotNull
+    private Float diameter;
 
     @NotNull
     private Integer year;
+
+    @NotBlank
+    private String description;
+
+    @NotNull
+    private BigDecimal price;
+
+    @NotBlank
+    private String telephone;
+
 }
