@@ -1,6 +1,8 @@
 package sebeikapranas.backend.entity.mapper;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
+import sebeikapranas.backend.controller.dto.CoinInDTO;
 import sebeikapranas.backend.service.dto.CoinOutDTO;
 import sebeikapranas.backend.service.dto.CoinsDTO;
 import sebeikapranas.backend.entity.Coin;
@@ -35,5 +37,11 @@ public class CoinMapper {
                 .weight(coin.getWeight())
                 .year(coin.getYear())
                 .build();
+    }
+
+    public Coin mapCoinInDtoToCoin(CoinInDTO dto) {
+        Coin coin = new Coin();
+        BeanUtils.copyProperties(dto, coin);
+        return coin;
     }
 }
