@@ -22,10 +22,10 @@ import static sebeikapranas.backend.entity.untils.UserUtils.isAdmin;
 @Service
 public class CoinService {
 
-    private CoinRepository coinRepository;
-    private CoinMapper coinMapper;
-    private FileService fileService;
-    private UserService userService;
+    private final CoinRepository coinRepository;
+    private final CoinMapper coinMapper;
+    private final FileService fileService;
+    private final UserService userService;
 
     public CoinService(CoinRepository coinRepository, CoinMapper coinMapper, FileService fileService, UserService userService) {
         this.coinRepository = coinRepository;

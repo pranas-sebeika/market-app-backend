@@ -1,11 +1,10 @@
 package sebeikapranas.backend.controller;
 
 import java.util.List;
-import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import sebeikapranas.backend.controller.dto.CoinInDTO;
-import sebeikapranas.backend.entity.User;
 import sebeikapranas.backend.service.dto.CoinOutDTO;
 import sebeikapranas.backend.service.dto.CoinsDTO;
 import sebeikapranas.backend.service.CoinService;
@@ -23,7 +21,7 @@ import sebeikapranas.backend.service.CoinService;
 @RestController
 public class CoinController {
 
-    private CoinService coinService;
+    private final CoinService coinService;
 
     public CoinController(CoinService coinService) {
         this.coinService = coinService;
@@ -42,7 +40,7 @@ public class CoinController {
     public Long addCoin(
             @RequestParam(name = "obverse") MultipartFile obverse,
             @RequestParam(name = "reverse") MultipartFile reverse,
-            @Valid CoinInDTO coinInDTO) {
+            @Validated CoinInDTO coinInDTO) {
 
         return coinService.addCoin(obverse, reverse, coinInDTO);
     }
