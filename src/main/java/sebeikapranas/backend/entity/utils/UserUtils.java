@@ -1,4 +1,4 @@
-package sebeikapranas.backend.entity.untils;
+package sebeikapranas.backend.entity.utils;
 
 import org.springframework.security.core.Authentication;
 

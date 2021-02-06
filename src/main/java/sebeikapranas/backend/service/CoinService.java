@@ -10,14 +10,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import sebeikapranas.backend.controller.dto.CoinInDTO;
 import sebeikapranas.backend.entity.User;
+import sebeikapranas.backend.repository.UserRepository;
 import sebeikapranas.backend.service.dto.CoinsDTO;
 import sebeikapranas.backend.entity.Coin;
 import sebeikapranas.backend.entity.mapper.CoinMapper;
 import sebeikapranas.backend.repository.CoinRepository;
 import sebeikapranas.backend.service.dto.CoinOutDTO;
 
-import static sebeikapranas.backend.entity.untils.UserUtils.getUsername;
-import static sebeikapranas.backend.entity.untils.UserUtils.isAdmin;
+import static sebeikapranas.backend.entity.utils.UserUtils.getUsername;
+import static sebeikapranas.backend.entity.utils.UserUtils.isAdmin;
 
 @Service
 public class CoinService {
@@ -26,24 +27,31 @@ public class CoinService {
     private final CoinMapper coinMapper;
     private final FileService fileService;
     private final UserService userService;
+    private final UserRepository userRepository;
 
-    public CoinService(CoinRepository coinRepository, CoinMapper coinMapper, FileService fileService, UserService userService) {
+    public CoinService(CoinRepository coinRepository,
+                       CoinMapper coinMapper,
+                       FileService fileService,
+                       UserService userService,
+                       UserRepository userRepository) {
         this.coinRepository = coinRepository;
         this.coinMapper = coinMapper;
         this.fileService = fileService;
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     public List<CoinsDTO> getAllCoins() {
         return coinRepository.findAll()
                 .stream()
-                .map(coin -> coinMapper.mapCoinToCoinsDTO(coin))
+                .map(coinMapper::mapCoinToCoinsDTO)
                 .collect(Collectors.toList());
     }
 
     public CoinOutDTO getCoin(long id) {
 //        TODO create custom exception
         Coin coin = coinRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+
         return coinMapper.mapCoinToCoinDTO(coin);
     }
 
@@ -73,6 +81,18 @@ public class CoinService {
                     .ifPresentOrElse(coin -> coinRepository.deleteById(coin.getId()),
                             () -> new EntityNotFoundException("NOT FOUND"));
         }
+
+    }
+
+    public List<CoinsDTO> getAllUserCoins() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        Long userId = userRepository.findByUsername(username).get().getId();
+
+        return coinRepository.findAll()
+                .stream()
+                .filter(coin -> coin.getOwner().getId().equals(userId))
+                .map(coinMapper::mapCoinToCoinsDTO)
+                .collect(Collectors.toList());
 
     }
 }

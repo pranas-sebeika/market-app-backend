@@ -59,5 +59,12 @@ public class CoinController {
         coinService.deleteCoin(id);
     }
 
+    @PreAuthorize("hasAnyRole('USER')")
+    @GetMapping(value = "/coins/my/coins")
+    public List<CoinsDTO> getMyCoins() {
+
+        return coinService.getAllUserCoins();
+    }
+
 
 }
