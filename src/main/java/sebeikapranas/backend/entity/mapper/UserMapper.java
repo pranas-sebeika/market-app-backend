@@ -26,11 +26,12 @@ public class UserMapper {
 
     public User mapUserInDtoToUser(UserInDTO dto) {
         Set<Role> roles = new HashSet<>();
-        roles.add(roleService.getRoleByName(Roles.ADMIN));
+        roles.add(roleService.getRoleByName(Roles.USER));
 
         User user = User.builder()
                 .username(dto.getUsername())
                 .password(passwordEncoder.encode(dto.getPassword()))
+                .email(dto.getEmail())
                 .roles(roles)
                 .isEnabled(true)
                 .isLocked(false)

@@ -21,7 +21,5 @@ public class UserOutDTO {
         this.roles = user.getRoles().stream()
                 .map(Role::getType)
                 .collect(Collectors.toSet());
-        this.name = user.getName();
-        this.lastname = user.getLastname();
     }
 }

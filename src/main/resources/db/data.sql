@@ -1,6 +1,6 @@
-INSERT INTO user (id, password, username, name, lastname, locked, enabled) VALUES
-(1, '{bcrypt}$2y$12$4Fd5gbh5shqEWjXLyD2AleD8SX2ppg2Y/KQOA9DWH6hEQxy7paJj6', 'user', 'Saulius', 'Sauliokas',  false, true),
-(2, '{bcrypt}$2y$12$iW4NwnwwwG65uEP.u9ysPOpTHG6eUBLI80r6kp.h2TVwhVsYTZ0I6', 'admin', 'Paulius', 'Pauliokas', false, true);
+INSERT INTO user (id, password, username, email, locked, enabled) VALUES
+(1, '{bcrypt}$2y$12$4Fd5gbh5shqEWjXLyD2AleD8SX2ppg2Y/KQOA9DWH6hEQxy7paJj6', 'user', 'Saulius@gmail.com',   false, true),
+(2, '{bcrypt}$2y$12$iW4NwnwwwG65uEP.u9ysPOpTHG6eUBLI80r6kp.h2TVwhVsYTZ0I6', 'admin', 'Paulius@gmail.com',  false, true);
 
 INSERT INTO coin (obverse, reverse, title, coin_condition, mintage, metal, hallmark, weight, diameter, year, price, telephone, owner_id, description ) VALUES
 ('/uploads/1936-vytautas-didysis-a.jpg',   '/uploads/1936-vytautas-didysis-b.jpg',   'Vytautas Didysis, 10 litų, 1936, LIETUVA, sidabras', 'VF/XF',   720000,     'Silver (Ag)',  0.750,    18,       32.2,     1936, 30.01,      '81231231',      1,'Vytautas Didysis, 10 litų, 1936, Lietuva, sidabras\n Aversas: Lietuvos Didysis kunigaikštis Vytautas Didysis apink jį užrašas: * VYTAUTAS DIDYSIS * 10 DEŠIMTS LITŲ 10 *\n Reversas: Valstybės herbas – Vytis, žemiau jo užrašas „LIETUVA“ po juo nukaldinimo metai 1936.\n Briauna: „TAUTOS * JĖGA * VIENYBĖJE *“'),

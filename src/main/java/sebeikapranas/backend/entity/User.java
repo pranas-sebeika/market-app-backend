@@ -46,15 +46,14 @@ public class User implements UserDetails {
     @NotBlank
     private String password;
 
-    private String name;
-
-    private String lastname;
-
     @Column(name = "locked")
     private Boolean isLocked;
 
     @Column(name = "enabled")
     private Boolean isEnabled;
+
+    @Column(nullable = false)
+    private String email;
 
     @ManyToMany
     @Cascade(CascadeType.PERSIST)

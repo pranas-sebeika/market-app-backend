@@ -2,6 +2,7 @@ package sebeikapranas.backend.controller;
 
 import io.swagger.annotations.Api;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -42,7 +43,7 @@ public class CoinController {
     public Long addCoin(
             @RequestParam(name = "obverse") MultipartFile obverse,
             @RequestParam(name = "reverse") MultipartFile reverse,
-            @Validated CoinInDTO coinInDTO) {
+            @Valid CoinInDTO coinInDTO) {
 
         return coinService.addCoin(obverse, reverse, coinInDTO);
     }

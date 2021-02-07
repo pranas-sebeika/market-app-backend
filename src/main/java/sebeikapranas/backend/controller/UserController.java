@@ -1,6 +1,7 @@
 package sebeikapranas.backend.controller;
 
 import io.swagger.annotations.Api;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
@@ -30,7 +31,7 @@ public class UserController {
 
     @PostMapping("user/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody @Validated UserInDTO userInDTO) {
+    public void createUser(@RequestBody @Valid UserInDTO userInDTO) {
         userService.createUser(userInDTO);
 
     }
