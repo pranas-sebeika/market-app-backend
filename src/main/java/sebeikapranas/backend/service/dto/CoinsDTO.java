@@ -19,6 +19,9 @@ public class CoinsDTO {
     @NotNull
     private Long id;
 
+    @NotNull
+    private Long owner;
+
     @NotBlank
     private String obverse;
 

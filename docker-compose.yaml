@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  blog-db:
+    image: mysql:8.0.22
+    volumes:
+      - market_db:/var/lib/mysql
+    restart: always
+    ports:
+      - "3333:3306"
+    environment:
+      MYSQL_DATABASE: market_db
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+
+volumes:
+  market_db:

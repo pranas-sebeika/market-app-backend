@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CoinOutDTO {
 
+    private Long owner;
+
     private String obverse;
 
     private String reverse;
@@ -24,11 +26,11 @@ public class CoinOutDTO {
 
     private String metal;
 
-    private Float hallmark;
+    private Double hallmark;
 
-    private Float weight;
+    private Double weight;
 
-    private Float diameter;
+    private Double diameter;
 
     private Integer year;
 

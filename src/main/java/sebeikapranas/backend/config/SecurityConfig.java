@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import sebeikapranas.backend.security.JwtAuthenticationFilter;
 import sebeikapranas.backend.security.JwtAuthorizationFilter;
 import sebeikapranas.backend.security.JwtProvider;
@@ -49,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity webSecurity) {
-        webSecurity.ignoring().antMatchers("/h2/**");
+        webSecurity.ignoring().antMatchers("/h2/**", "/swagger-ui.html");
     }
 
     @Bean

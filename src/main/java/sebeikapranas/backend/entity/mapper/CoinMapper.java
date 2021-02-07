@@ -13,6 +13,7 @@ public class CoinMapper {
     public CoinsDTO mapCoinToCoinsDTO(Coin coin){
         return CoinsDTO.builder()
                 .id(coin.getId())
+                .owner(coin.getOwner().getId())
                 .obverse(coin.getObverse())
                 .reverse(coin.getReverse())
                 .title(coin.getTitle())
@@ -23,6 +24,7 @@ public class CoinMapper {
 
     public CoinOutDTO mapCoinToCoinDTO(Coin coin) {
         return CoinOutDTO.builder()
+                .owner(coin.getOwner().getId())
                 .condition(coin.getCondition())
                 .description(coin.getDescription())
                 .diameter(coin.getDiameter())

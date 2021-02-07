@@ -8,8 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.validation.constraints.NotBlank;
 
@@ -17,6 +20,9 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Setter
 @Getter
+@Table(name = "coin")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Coin {
 
     @Id
@@ -24,7 +30,8 @@ public class Coin {
     private Long id;
 
     @NotNull
-    @ManyToOne()
+    @ManyToOne
+    @JoinColumn(name="owner_id", referencedColumnName = "id", nullable=false)
     private User owner;
 
     @NotBlank
@@ -39,7 +46,7 @@ public class Coin {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "condition")
+    @Column(name = "coin_condition")
     private String condition;
 
     @Column(name = "mintage")
@@ -49,15 +56,15 @@ public class Coin {
     private String metal;
 
     @Column(name = "hallmark")
-    private Float hallmark;
+    private Double hallmark;
 
     @NotNull
     @Column(name = "weight")
-    private Float weight;
+    private Double weight;
 
     @NotNull
     @Column(name = "diameter")
-    private Float diameter;
+    private Double diameter;
 
     @NotNull
     @Column(name = "year")

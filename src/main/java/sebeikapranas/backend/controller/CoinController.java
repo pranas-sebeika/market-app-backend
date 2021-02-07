@@ -1,5 +1,6 @@
 package sebeikapranas.backend.controller;
 
+import io.swagger.annotations.Api;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,6 +20,7 @@ import sebeikapranas.backend.service.dto.CoinsDTO;
 import sebeikapranas.backend.service.CoinService;
 
 @RestController
+@Api(tags = "This controller is responsible for interaction with coin object)")
 public class CoinController {
 
     private final CoinService coinService;
@@ -60,7 +62,7 @@ public class CoinController {
     }
 
     @PreAuthorize("hasAnyRole('USER')")
-    @GetMapping(value = "/coins/my/coins")
+    @GetMapping(value = "/my/coins")
     public List<CoinsDTO> getMyCoins() {
 
         return coinService.getAllUserCoins();

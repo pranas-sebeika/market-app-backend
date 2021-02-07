@@ -1,5 +1,6 @@
 package sebeikapranas.backend.controller;
 
+import io.swagger.annotations.Api;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
@@ -13,6 +14,7 @@ import sebeikapranas.backend.service.UserService;
 import sebeikapranas.backend.service.dto.UserInDTO;
 
 @RestController
+@Api(tags = "This controller is responsible for interaction with user object)")
 public class UserController {
 
     private final UserService userService;
